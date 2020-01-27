@@ -1,0 +1,53 @@
+Roadrunner_setup.txt
+
+
+References:
+https://github.com/acmerobotics/road-runner
+https://github.com/acmerobotics/road-runner-quickstart
+https://github.com/Dkjam5511/Skystone
+
+
+RoadRunner Setup:
+
+
+1. Configure the DriveConstants.java file  
+   - Edit the files "TODO" sections accordingly
+
+
+2. We are using the built-in motor velocity PID, thus:
+  
+    - Run the DriveVelocityPIDTuner.java file
+       - Its important to tune the coefficients for the robot
+       - Adjust the PID gains with the dashboard to minimize the error as best as you can
+       - Prioritize eliminating the phase lag even at the cost of some extra oscillations
+
+
+       - Fill in DriveCinstants.MOTOR_VELO_PID, in the DriveConstants.java file
+
+           public static final PIDCoefficients MOTOR_VELO_PID = null;  <--- Change
+
+
+3. Straight Test
+
+   - If the robot lands within a few inches of the target, these steps were successful
+     IF NOT, repeate the procedures of consider the possibility of an incorrect drive constant (especially if using built-in motor velocity-PID)
+
+
+4. Turn Test
+
+  - If the robot is relatively close to the target, the value is good. Like characterization, you can manually tweak the width until sufficient accuracy is obtained
+
+
+5. Spline Test
+
+ - If the robot successfully follows the spline, its a good indication that the previous steps were successful
+ - If NOT, try to ascertain the cause of the failure.
+ 		- Did the robot over/under-rotate?  If so check the track width
+ 		- Did the robot travel too far/stop to short?    If so, cheeck the drive characterization 
+
+
+6. Follower PID
+  
+  - Tune the follower PID controllers.
+  - Typicall only a P controller is required.  
+  - THis should get that last 10% trac
