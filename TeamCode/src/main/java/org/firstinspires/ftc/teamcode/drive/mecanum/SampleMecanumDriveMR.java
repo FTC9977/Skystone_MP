@@ -48,10 +48,16 @@ public class SampleMecanumDriveMR extends SampleMecanumDriveBase {
         // upward (normal to the floor) using a command like the following:
         // BNO055IMUUtil.remapAxes(imu, AxesOrder.XYZ, AxesSigns.NPN);
 
-        leftFront = hardwareMap.dcMotor.get("leftFront");
-        leftRear = hardwareMap.dcMotor.get("leftRear");
-        rightRear = hardwareMap.dcMotor.get("rightRear");
-        rightFront = hardwareMap.dcMotor.get("rightFront");
+        leftFront = hardwareMap.dcMotor.get("LF");
+        leftRear = hardwareMap.dcMotor.get("LR");
+        rightRear = hardwareMap.dcMotor.get("RR");
+        rightFront = hardwareMap.dcMotor.get("RF");
+
+
+        //leftFront = hardwareMap.dcMotor.get("leftFront");
+        //leftRear = hardwareMap.dcMotor.get("leftRear");
+        //rightRear = hardwareMap.dcMotor.get("rightRear");
+        //rightFront = hardwareMap.dcMotor.get("rightFront");
 
         motors = Arrays.asList(leftFront, leftRear, rightRear, rightFront);
 
@@ -67,6 +73,7 @@ public class SampleMecanumDriveMR extends SampleMecanumDriveBase {
         }
 
         // TODO: reverse any motors using DcMotor.setDirection()
+
 
         // TODO: if desired, use setLocalizer() to change the localization method
         // for instance, setLocalizer(new ThreeTrackingWheelLocalizer(...));

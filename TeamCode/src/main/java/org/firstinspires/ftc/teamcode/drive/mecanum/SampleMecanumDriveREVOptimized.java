@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import com.acmerobotics.roadrunner.control.PIDCoefficients;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import java.util.ArrayList;
@@ -48,10 +49,15 @@ public class SampleMecanumDriveREVOptimized extends SampleMecanumDriveBase {
         // upward (normal to the floor) using a command like the following:
         // BNO055IMUUtil.remapAxes(imu, AxesOrder.XYZ, AxesSigns.NPN);
 
-        leftFront = hardwareMap.get(ExpansionHubMotor.class, "leftFront");
-        leftRear = hardwareMap.get(ExpansionHubMotor.class, "leftRear");
-        rightRear = hardwareMap.get(ExpansionHubMotor.class, "rightRear");
-        rightFront = hardwareMap.get(ExpansionHubMotor.class, "rightFront");
+        //leftFront = hardwareMap.get(ExpansionHubMotor.class, "leftFront");
+        //leftRear = hardwareMap.get(ExpansionHubMotor.class, "leftRear");
+        //rightRear = hardwareMap.get(ExpansionHubMotor.class, "rightRear");
+        //rightFront = hardwareMap.get(ExpansionHubMotor.class, "rightFront");
+
+        leftFront = hardwareMap.get(ExpansionHubMotor.class, "LF");
+        leftRear = hardwareMap.get(ExpansionHubMotor.class, "LR");
+        rightFront = hardwareMap.get(ExpansionHubMotor.class, "RF");
+        rightRear = hardwareMap.get(ExpansionHubMotor.class, "RR");
 
         motors = Arrays.asList(leftFront, leftRear, rightRear, rightFront);
 
@@ -67,6 +73,10 @@ public class SampleMecanumDriveREVOptimized extends SampleMecanumDriveBase {
         }
 
         // TODO: reverse any motors using DcMotor.setDirection()
+
+        leftRear.setDirection(DcMotor.Direction.REVERSE);
+        leftFront.setDirection(DcMotor.Direction.REVERSE);
+
 
         // TODO: if desired, use setLocalizer() to change the localization method
         // for instance, setLocalizer(new ThreeTrackingWheelLocalizer(...));
